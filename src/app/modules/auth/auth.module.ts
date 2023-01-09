@@ -5,7 +5,8 @@ import { RegisterComponent } from './register/register.component';
 import { SharedModule } from '../shared/shared.module';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { MatButtonModule } from '@angular/material/button';
+import { MatRadioModule } from '@angular/material/radio'
 const components = [
   LoginComponent,
   RegisterComponent
@@ -18,7 +19,9 @@ const components = [
     SharedModule,
     MatInputModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatRadioModule
   ],
   exports: [
     ...components

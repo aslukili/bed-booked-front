@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UserAuthRequest } from 'src/app/models/UserAuthRequest';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -12,6 +14,8 @@ export class LoginComponent implements OnInit{
 
   constructor(
     private formBuilder: FormBuilder,
+    private router: Router,
+    private authenticationService: AuthenticationService
   ){
 
   }
@@ -30,7 +34,11 @@ export class LoginComponent implements OnInit{
     }
 
     // TODO call login method here
-    console.log(this.formGroup?.value);
+    console.log(this.formGroup.value);
+  }
+
+  public onLogin(userAuthRequest: UserAuthRequest): void {
+    
   }
 
 }

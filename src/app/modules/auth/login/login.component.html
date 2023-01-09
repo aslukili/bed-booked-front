@@ -1,4 +1,5 @@
-<form *ngIf="formGroup" [formGroup]="formGroup">
+<div class="grid h-screen place-items-center">
+  <form *ngIf="formGroup" [formGroup]="formGroup">
     <mat-form-field appearance="fill">
       <mat-label>Username</mat-label>
       <input formControlName="username" matInput placeholder="username">
@@ -9,5 +10,8 @@
       <input formControlName="password" matInput placeholder="password">
     </mat-form-field>
     <br>
-    <button class="bg-sky-700 p-3" (click)="onFormSubmit()" type="submit"> submit </button>
+    <div class="flex items-center justify-center">
+      <button mat-flat-button color="primary" (click)="onFormSubmit()" type="submit"> LOGIN </button>
+    </div>
   </form>
+</div>
