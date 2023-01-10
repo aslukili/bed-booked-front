@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { Role, FilteredRole } from 'src/app/enums/role';
+import { UserRegisterRequest } from 'src/app/models/UserRegisterRequest';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 
 @Component({
@@ -11,6 +14,8 @@ import { Role, FilteredRole } from 'src/app/enums/role';
 export class RegisterComponent implements OnInit {
 
   formGroup: FormGroup | undefined;
+  // instead of defining a subscription for each method, we declare an array of subs
+  private subscriptions: Subscription[] = [];
 
 
   // convert the keys from FilteredRole to values
@@ -22,7 +27,8 @@ export class RegisterComponent implements OnInit {
   roleValues: FilteredRole[] = Object.keys(this.roles).map(key => Number(key)) as FilteredRole[];
 
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private authService: AuthenticationService
   ) {
 
   }
@@ -46,6 +52,15 @@ export class RegisterComponent implements OnInit {
 
     // TODO call login method here
     console.log(this.formGroup.value);
+    this.onRegister(this.formGroup.value)
+  }
+
+  public onRegister(user: UserRegisterRequest): void {
+    this.subscriptions.push(
+      this.authService.register(user).subscribe({
+        next: () => {console.log("registered")}
+      })
+    )
   }
 
 }

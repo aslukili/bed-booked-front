@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { Observable } from 'rxjs';
 import { environment } from '../../environment/environment';
 import { UserRegisterRequest } from '../models/UserRegisterRequest';
 
@@ -14,9 +15,10 @@ export class AuthenticationService {
   private loggedInUsername: any;
   private jwtHelper = new JwtHelperService();
 
-  constructor(http: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  public register(userRegisterRequest: UserRegisterRequest): void {
-    console.log("register");
+  
+  public register(user: UserRegisterRequest): Observable<UserRegisterRequest> {
+    return this.http.post<UserRegisterRequest>(`${this.apiUrl}/api/v1/auth/register`, user)
   }
 }
