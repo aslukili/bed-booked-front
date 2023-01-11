@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Role, FilteredRole } from 'src/app/enums/role';
+import { AuthResponse } from 'src/app/models/AuthResponse';
 import { UserRegisterRequest } from 'src/app/models/UserRegisterRequest';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 
@@ -11,7 +14,7 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent implements OnInit, OnDestroy {
 
   formGroup: FormGroup | undefined;
   // instead of defining a subscription for each method, we declare an array of subs
@@ -28,11 +31,19 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthenticationService
+    private authService: AuthenticationService,
+    private router: Router
   ) {
 
   }
+ 
   ngOnInit(): void {
+    // if there is already a sigged in  user the redirect to profile
+    if(this.authService.isUserLoggedIn()){
+      this.router.navigateByUrl('/profile'); 
+    }
+
+
     this.formGroup = this.formBuilder.group(
       {
         firstName: [undefined, Validators.required],
@@ -58,9 +69,23 @@ export class RegisterComponent implements OnInit {
   public onRegister(user: UserRegisterRequest): void {
     this.subscriptions.push(
       this.authService.register(user).subscribe({
-        next: () => {console.log("registered")}
+        next: (response: AuthResponse) => {
+          console.log("registered");
+          console.log(response.token);
+          // TODO get the token from the response object and store it inside local storage
+          this.authService.storeTokenInLocalStorage(response.token)
+          this.router.navigateByUrl('profile');
+        },
+        error: (httpErrorResponse: HttpErrorResponse) => {
+          console.log("an error happened!");
+          console.log(httpErrorResponse);
+        }
       })
     )
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
 }

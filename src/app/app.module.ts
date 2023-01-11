@@ -8,8 +8,10 @@ import { MatCardModule } from '@angular/material/card';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './modules/home/home.component';
 import { ProfileComponent } from './modules/profile/profile.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthModule } from './modules/auth/auth.module';
+import { AuthenticationGuard } from './guards/authentication.guard';
+import { AuthenticationInterceptor } from './interceptors/authentication.interceptor';
 
 
 @NgModule({
@@ -24,9 +26,12 @@ import { AuthModule } from './modules/auth/auth.module';
     BrowserAnimationsModule,
     MatCardModule,
     HttpClientModule,
-    AuthModule    
+    AuthModule   
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthenticationInterceptor, multi: true }
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
