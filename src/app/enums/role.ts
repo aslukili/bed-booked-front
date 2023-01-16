@@ -1,7 +1,7 @@
 export enum Role {
-    ADMIN = 1,
-    USER = 2,
-    OWNER = 3
+    USER = 1,
+    OWNER = 2,
+    ADMIN = 3
 }
 
 export type FilteredRole = Role.USER | Role.OWNER;
