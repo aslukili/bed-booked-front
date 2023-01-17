@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit{
     this.subscriptions.push(
       this.authenticationService.login(userAuthRequest).subscribe({
         next: (response: AuthResponse) => {
-          console.log("registered");
+          console.log("logged in");
           console.log(response.token);
           this.authenticationService.storeTokenInLocalStorage(response.token)
           this.router.navigateByUrl('profile');

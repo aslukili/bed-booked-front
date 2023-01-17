@@ -20,6 +20,10 @@ import { SharedModule } from "./modules/shared/shared.module";
 import { HotelsComponent } from './modules/hotels/hotels.component';
 import { HotelDetailsComponent } from './modules/hotel-details/hotel-details.component';
 import { RoomsTableComponent } from './modules/rooms-table/rooms-table.component';
+import { ReservationFormComponent } from './modules/reservation-form/reservation-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { ReservationsTableComponent } from './modules/reservations-table/reservations-table.component';
 
 
 @NgModule({
@@ -29,7 +33,9 @@ import { RoomsTableComponent } from './modules/rooms-table/rooms-table.component
         ProfileComponent,
         HotelsComponent,
         HotelDetailsComponent,
-        RoomsTableComponent
+        RoomsTableComponent,
+        ReservationFormComponent,
+        ReservationsTableComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: AuthenticationInterceptor, multi: true }
@@ -44,7 +50,9 @@ import { RoomsTableComponent } from './modules/rooms-table/rooms-table.component
         AuthModule,
         SharedModule,
         MatTableModule,
-        MatIconModule
+        MatIconModule,
+        ReactiveFormsModule,
+        MatInputModule
     ]
 })
 export class AppModule { }
