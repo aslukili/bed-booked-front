@@ -24,6 +24,15 @@ import { ReservationFormComponent } from './modules/reservation-form/reservation
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { ReservationsTableComponent } from './modules/reservations-table/reservations-table.component';
+import { MatButtonModule } from '@angular/material/button';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatMenuModule} from '@angular/material/menu';
+import { RouterModule } from '@angular/router';
+import { DashboardComponent } from './modules/admin/dashboard/dashboard.component';
+import { UsersComponent } from './modules/admin/users/users.component';
+
+
 
 
 @NgModule({
@@ -35,7 +44,9 @@ import { ReservationsTableComponent } from './modules/reservations-table/reserva
         HotelDetailsComponent,
         RoomsTableComponent,
         ReservationFormComponent,
-        ReservationsTableComponent
+        ReservationsTableComponent,
+        DashboardComponent,
+        UsersComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: AuthenticationInterceptor, multi: true }
@@ -52,7 +63,12 @@ import { ReservationsTableComponent } from './modules/reservations-table/reserva
         MatTableModule,
         MatIconModule,
         ReactiveFormsModule,
-        MatInputModule
+        MatInputModule,
+        MatButtonModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatMenuModule,
+        RouterModule
     ]
 })
 export class AppModule { }

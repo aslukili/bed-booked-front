@@ -9,7 +9,7 @@ import { Reservation } from '../models/Reservation';
   providedIn: 'root'
 })
 export class ReservationService {
-
+  
 
   private readonly apiUrl = environment.apiUrl;
 
@@ -19,5 +19,9 @@ export class ReservationService {
 
   public reserve(reservation: ReservationDto): Observable<Reservation> {
     return this.http.post<Reservation>(`${this.apiUrl}/reservations`, reservation);
+  }
+
+  public getReservationsOfUser(): Observable<Reservation[]> {
+    return this.http.get<Reservation[]>(`${this.apiUrl}/reservations/user`);
   }
 }

@@ -27,8 +27,6 @@ import { RoomService } from 'src/app/services/room.service';
 export class RoomsTableComponent implements OnInit{
 
   rooms: Room[] = [];
-  dataSource: Room[] = [];
-
 
   constructor(
     private roomService: RoomService,
@@ -38,6 +36,8 @@ export class RoomsTableComponent implements OnInit{
   ngOnInit(): void {
     this.getRooms();
   }
+
+  dataSource: Room[] = [];
 
   getRooms() {
     const id = Number(this.route.snapshot.paramMap.get('id'));

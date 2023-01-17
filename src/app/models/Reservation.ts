@@ -6,6 +6,7 @@ export interface Reservation {
     checkOutDate: Date,
     price: number,
     isApproved: boolean,
+    isNotCanceled: boolean,
     room: Room,
     user: User
 }
