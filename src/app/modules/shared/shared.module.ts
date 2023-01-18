@@ -5,17 +5,19 @@ import { FooterComponent } from './layout/footer/footer.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { RouterModule } from '@angular/router';
 import { SideBarComponent } from './layout/side-bar/side-bar.component';
+import { AwaitingConfirmedPipe } from './pipes/awaiting-confirmed.pipe';
 
 
 const components = [
   HeaderComponent,
   FooterComponent,
-  SideBarComponent
+  SideBarComponent,
+  AwaitingConfirmedPipe
 ]
 
 
 @NgModule({
-  declarations: [...components],
+  declarations: [...components, AwaitingConfirmedPipe],
   imports: [
     CommonModule,
     MatMenuModule,

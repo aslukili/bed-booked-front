@@ -34,6 +34,7 @@ import { UsersComponent } from './modules/admin/users/users.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
 
 import { SideBarComponent } from './modules/shared/layout/side-bar/side-bar.component';
+import { AwaitingConfirmedPipe } from './modules/shared/pipes/awaiting-confirmed.pipe';
 
 
 

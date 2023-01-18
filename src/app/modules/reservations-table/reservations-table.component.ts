@@ -41,5 +41,5 @@ export class ReservationsTableComponent implements OnInit {
   }
 
 
-  displayedColumns: string[] = ['Check in', 'Check out', 'Total price', 'Actions'];
+  displayedColumns: string[] = ['Check in', 'Check out', 'Total price', 'Status', 'Actions'];
 }
