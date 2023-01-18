@@ -1,5 +1,6 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
+import { PageEvent } from '@angular/material/paginator';
 import { ActivatedRoute } from '@angular/router';
 import { Room } from 'src/app/models/Room';
 import { RoomService } from 'src/app/services/room.service';
@@ -41,7 +42,7 @@ export class RoomsTableComponent implements OnInit{
 
   getRooms() {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.roomService.getRoomsByHotelId(id).subscribe({
+    this.roomService.getRoomsByHotelId(id, this.pageEvent?.pageIndex, this.pageEvent?.pageSize).subscribe({
       next: (roomsResponse) => {
         this.rooms = roomsResponse;
         console.log(this.rooms);
@@ -58,4 +59,13 @@ export class RoomsTableComponent implements OnInit{
   columnsToDisplayWithExpand = [...this.columnsToDisplay, 'expand'];
   expandedElement!: Room;
 
+  pageSize = 10;
+  pageSizeOptions: number[] = [2, 5, 10, 25, 100];
+  totalLength = 100;
+  pageEvent: PageEvent = { pageIndex: 0, pageSize: 2, length: 100};
+
+  onChangedTable(event: PageEvent) {
+    this.pageEvent = event;
+    this.getRooms();
+  }
 }

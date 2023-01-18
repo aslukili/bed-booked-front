@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environment/environment';
@@ -16,7 +16,11 @@ export class RoomService {
     private http: HttpClient
   ) { }
 
-  getRoomsByHotelId(id: number): Observable<Room[]> {
-    return this.http.get<Room[]>(`${this.apiUrl}/rooms/hotel?hotelId=${id}`);
+  getRoomsByHotelId(id: number, pageIndex: number, pageSize: number): Observable<Room[]> {
+    const params = new HttpParams()
+    .set('hotel_id', id.toString())
+    .set('page_number', pageIndex.toString())
+    .set('page_size', pageSize.toString());
+  return this.http.get<Room[]>(`${this.apiUrl}/rooms/paginate`, { params });
   }
 }

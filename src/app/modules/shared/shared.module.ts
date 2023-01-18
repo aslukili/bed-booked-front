@@ -9,12 +9,13 @@ import { SideBarComponent } from './layout/side-bar/side-bar.component';
 
 const components = [
   HeaderComponent,
-  FooterComponent
+  FooterComponent,
+  SideBarComponent
 ]
 
 
 @NgModule({
-  declarations: [...components, SideBarComponent],
+  declarations: [...components],
   imports: [
     CommonModule,
     MatMenuModule,

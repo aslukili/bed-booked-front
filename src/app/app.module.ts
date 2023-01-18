@@ -31,6 +31,9 @@ import {MatMenuModule} from '@angular/material/menu';
 import { RouterModule } from '@angular/router';
 import { DashboardComponent } from './modules/admin/dashboard/dashboard.component';
 import { UsersComponent } from './modules/admin/users/users.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
+
+import { SideBarComponent } from './modules/shared/layout/side-bar/side-bar.component';
 
 
 
@@ -46,7 +49,7 @@ import { UsersComponent } from './modules/admin/users/users.component';
         ReservationFormComponent,
         ReservationsTableComponent,
         DashboardComponent,
-        UsersComponent
+        UsersComponent,
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: AuthenticationInterceptor, multi: true }
@@ -68,7 +71,8 @@ import { UsersComponent } from './modules/admin/users/users.component';
         MatDatepickerModule,
         MatNativeDateModule,
         MatMenuModule,
-        RouterModule
+        RouterModule,
+        MatPaginatorModule
     ]
 })
 export class AppModule { }
