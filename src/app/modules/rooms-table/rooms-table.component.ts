@@ -59,10 +59,10 @@ export class RoomsTableComponent implements OnInit{
   columnsToDisplayWithExpand = [...this.columnsToDisplay, 'expand'];
   expandedElement!: Room;
 
-  pageSize = 10;
+  pageSize = 5;
   pageSizeOptions: number[] = [2, 5, 10, 25, 100];
   totalLength = 100;
-  pageEvent: PageEvent = { pageIndex: 0, pageSize: 2, length: 100};
+  pageEvent: PageEvent = { pageIndex: 0, pageSize: 5, length: 100};
 
   onChangedTable(event: PageEvent) {
     this.pageEvent = event;

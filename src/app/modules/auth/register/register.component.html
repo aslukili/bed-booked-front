@@ -1,4 +1,4 @@
-<div class="grid h-screen place-items-center">
+<div class="grid h-screen place-items-center" style="background: rgb(249, 191, 167); background: linear-gradient(45deg,  rgb(211, 105, 149)  0%, rgb(245, 164, 101) 100%);">
     <form *ngIf="formGroup" [formGroup]="formGroup">
         <div class="flex gap-3">
             <mat-form-field appearance="fill">
@@ -27,12 +27,12 @@
                     {{ roles[role] }}
                 </mat-radio-button>
             </mat-radio-group>
-        </div>
-        
-          
+        </div>      
       <br>
       <div class="flex items-center justify-center">
         <button mat-flat-button color="primary" (click)="onFormSubmit()" type="submit"> REGISTER </button>
       </div>
+      <br>
+      <p class="text-center">already have an account? <a class="cursor-pointer font-medium text-blue-600 dark:text-blue-500 hover:underline" routerLink="/register">login here</a></p>
     </form>
   </div>

@@ -3,7 +3,7 @@
     <div class="mt-5 mb-5 flex flex-col sm:flex-row justify-between -mx-2 flex-wrap">
         
         <!-- card -->
-        <div *ngFor="let hotel of hotels" (click)="showHotelInfo(hotel.id)" class="cursor-pointer rounded px-2 w-full pt-4 sm:w-1/2 md:w-1/2 lg:w-1/4 lg:pt-0">
+        <div *ngFor="let hotel of hotels" (click)="showHotelInfo(hotel.id)" class="mt-7 cursor-pointer rounded px-2 w-full pt-4 sm:w-1/2 md:w-1/2 lg:w-1/4 lg:pt-0">
             <div class="relative bg-red-500 pb-48 rounded-t">
                 <img [src]="hotel.picture"
                     alt="Hawaii, USA"

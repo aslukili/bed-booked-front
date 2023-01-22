@@ -8,5 +8,4 @@ export class AwaitingConfirmedPipe implements PipeTransform {
   transform(value: boolean) {
     return value ? 'Confirmed' : 'Awaiting';
   }
-
 }

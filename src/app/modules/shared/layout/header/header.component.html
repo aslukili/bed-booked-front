@@ -25,7 +25,7 @@
                     <mat-menu #account>
                         <button mat-menu-item routerLink="/login" *ngIf="authService.isUserLoggedIn() == false">Log In</button>
                         <button *ngIf="authService.isUserLoggedIn() == false" mat-menu-item routerLink="/register">Register</button>
-                        <button *ngIf="authService.isUserLoggedIn() == true" mat-menu-item routerLink="/signout">Sign Out</button>
+                        <button *ngIf="authService.isUserLoggedIn() == true" mat-menu-item routerLink="/logout">Sign Out</button>
                     </mat-menu>
                 </li>
             </ul>
